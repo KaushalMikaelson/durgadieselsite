@@ -98,7 +98,7 @@ export default function AboutSection() {
             <div className="relative group overflow-hidden rounded-sm border border-white/10 bg-garage-black tech-crosshair-br">
               <img
                 src="data/download.jpg"
-                onError={(e) => { e.target.src = "data/unnamed%20(3).webp"; }}
+                onError={(e) => { e.target.onerror = null; e.target.src = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80"; }}
                 alt="Heavy Machinery & Tractor Bay at Maa Durga Diesel"
                 className="w-full h-44 sm:h-48 object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
               />
