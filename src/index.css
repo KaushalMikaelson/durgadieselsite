@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: #08090b;
+    color: #f3f4f6;
+  }
+  
+  body {
+    background-color: #08090b;
+    color: #f3f4f6;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Barlow Condensed', 'Syne', sans-serif;
+    @apply tracking-tight font-black uppercase;
+  }
+}
+
+/* Chamfered polygon shapes matching GARAGE33 design */
+.chamfer-btn {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chamfer-btn-sm {
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: all 0.2s ease;
+}
+
+.chamfer-badge {
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+
+.chamfer-banner {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 32px) 100%, 0 100%);
+}
+@media (max-width: 768px) {
+  .chamfer-banner {
+    clip-path: none;
+  }
+}
+
+/* Hollow wireframe outline text for "THE BEST" */
+.text-outline-white {
+  color: transparent;
+  -webkit-text-stroke: 1.8px #ffffff;
+  text-stroke: 1.8px #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.text-outline-orange {
+  color: transparent;
+  -webkit-text-stroke: 1.8px #ff5500;
+  text-stroke: 1.8px #ff5500;
+}
+
+.text-outline-faint {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 85, 0, 0.18);
+}
+
+/* Giant background watermark */
+.watermark-garage {
+  font-family: 'Barlow Condensed', 'Syne', sans-serif;
+  font-size: 19vw;
+  font-weight: 900;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.035);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Subtle crosshair lines on image cards */
+.tech-crosshair-tl::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #ff5500;
+  border-left: 2px solid #ff5500;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.tech-crosshair-br::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #ff5500;
+  border-right: 2px solid #ff5500;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Pulse animation for wheel rim glow */
+@keyframes wheelPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 12px rgba(255, 85, 0, 0.85)) drop-shadow(0 0 25px rgba(255, 85, 0, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 106, 0, 1)) drop-shadow(0 0 35px rgba(255, 85, 0, 0.6));
+  }
+}
+
+.animate-wheel-pulse {
+  animation: wheelPulse 2.4s ease-in-out infinite;
+}
