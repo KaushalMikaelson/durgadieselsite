@@ -108,74 +108,122 @@ function LowPolyDieselRig() {
             <stop offset="0%" stopColor="#303846" />
             <stop offset="100%" stopColor="#11141a" />
           </linearGradient>
+
+          {/* Headlight Forward Projector Cone Gradient */}
+          <linearGradient id="headlightBeamHero" x1="100%" y1="50%" x2="0%" y2="50%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85" />
+            <stop offset="20%" stopColor="#ffaa66" stopOpacity="0.45" />
+            <stop offset="60%" stopColor="#ff5500" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#ff5500" stopOpacity="0" />
+          </linearGradient>
+
+          {/* Turbo Exhaust Nitro Flame Gradient */}
+          <linearGradient id="exhaustFlameGradHero" x1="0%" y1="50%" x2="100%" y2="50%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+            <stop offset="25%" stopColor="#ff9900" stopOpacity="0.95" />
+            <stop offset="65%" stopColor="#ff3300" stopOpacity="0.75" />
+            <stop offset="100%" stopColor="#ff0000" stopOpacity="0" />
+          </linearGradient>
         </defs>
 
-        {/* Ground Shadow & Speed Lines */}
-        <ellipse cx="400" cy="365" rx="350" ry="18" fill="black" opacity="0.65" filter="blur(8px)" />
-        <line x1="80" y1="355" x2="180" y2="355" stroke="rgba(255,85,0,0.3)" strokeWidth="3" strokeDasharray="16 10" />
-        <line x1="120" y1="365" x2="210" y2="365" stroke="rgba(255,85,0,0.2)" strokeWidth="2" strokeDasharray="10 8" />
-
-        {/* Heavy Commercial Truck & Diesel Rig Low-Poly Facets */}
-        <polygon points="120,335 180,345 340,345 460,345 620,345 710,330 690,348 150,348" fill="#111317" />
-        <polygon points="110,325 180,335 240,295 190,285" fill="#e64400" />
-        <polygon points="110,325 190,285 270,270 210,310" fill="#ff6200" />
-        <polygon points="110,325 140,338 210,338 210,310" fill="#b33300" />
-
-        {/* Headlight */}
-        <polygon points="145,305 180,308 175,315 138,312" fill="#ffffff" filter="url(#orangeGlowHero)" opacity="0.9" />
-
-        {/* Hood / Bonnet */}
-        <polygon points="190,285 270,270 380,265 310,285" fill="#ff7733" />
-        <polygon points="270,270 380,265 410,240 330,245" fill="#ff8544" />
+        {/* Ground Shadow & Speed Streaks */}
+        <ellipse cx="400" cy="365" rx="350" ry="18" fill="black" opacity="0.65" filter="blur(8px)" className="animate-ground-shadow" />
         
-        {/* Windshield & Cabin Roof */}
-        <polygon points="330,245 410,240 500,238 430,248" fill="#ff6a1a" />
-        <polygon points="410,240 500,238 600,245 560,285 415,285" fill="url(#windowTintHero)" stroke="#222834" strokeWidth="1.5" />
-        <polygon points="440,250 510,248 540,280 435,280" fill="#2d3748" opacity="0.6" />
-        <polygon points="500,238 600,245 640,265 560,285" fill="#181e29" />
+        {/* Animated Road Lines Streaming Backward (Left to Right) */}
+        <g className="opacity-90">
+          <line x1="20" y1="352" x2="780" y2="352" stroke="rgba(255,85,0,0.5)" strokeWidth="2.5" strokeDasharray="30 70 15 55 40 90" strokeLinecap="round" className="animate-road-fast" />
+          <line x1="40" y1="360" x2="760" y2="360" stroke="rgba(255,120,40,0.35)" strokeWidth="2" strokeDasharray="45 80 20 60" strokeLinecap="round" className="animate-road-medium" />
+          <line x1="70" y1="368" x2="730" y2="368" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeDasharray="25 60 10 40" strokeLinecap="round" className="animate-road-fast" />
+          <line x1="100" y1="375" x2="700" y2="375" stroke="rgba(255,85,0,0.2)" strokeWidth="1.5" strokeDasharray="60 120" strokeLinecap="round" className="animate-road-slow" />
+        </g>
 
-        {/* Side Body */}
-        <polygon points="270,270 310,285 430,285 410,335 280,335 240,295" fill="url(#bodyTopHero)" />
-        <polygon points="430,285 560,285 540,335 410,335" fill="url(#bodySideHero)" />
-        <polygon points="480,295 535,295 520,325" fill="#220a00" stroke="#ff5500" strokeWidth="1" />
+        {/* Heavy Commercial Truck & Diesel Rig Body with Suspension Motion */}
+        <g className="animate-car-body">
+          {/* Headlight Forward Projector Beam */}
+          <polygon points="138,308 -40,220 -40,380 140,314" fill="url(#headlightBeamHero)" className="animate-headlight-beam" pointerEvents="none" />
 
-        {/* Cargo / Tail Section */}
-        <polygon points="600,245 680,270 640,295 560,285" fill="#e64400" />
-        <polygon points="640,295 680,270 720,295 670,315 570,315 560,285" fill="#ff5500" />
-        <polygon points="670,315 720,295 725,320 670,335 580,335" fill="url(#bodyDarkHero)" />
-        <polygon points="720,295 735,310 725,320" fill="#b33300" />
-        <line x1="710" y1="300" x2="735" y2="308" stroke="#ff2200" strokeWidth="4" filter="url(#orangeGlowHero)" />
+          {/* Chassis Underbody */}
+          <polygon points="120,335 180,345 340,345 460,345 620,345 710,330 690,348 150,348" fill="#111317" />
 
-        {/* FRONT WHEEL */}
+          {/* Front Cab / Bumper */}
+          <polygon points="110,325 180,335 240,295 190,285" fill="#e64400" />
+          <polygon points="110,325 190,285 270,270 210,310" fill="#ff6200" />
+          <polygon points="110,325 140,338 210,338 210,310" fill="#b33300" />
+
+          {/* Headlamp Prism */}
+          <polygon points="145,305 180,308 175,315 138,312" fill="#ffffff" filter="url(#orangeGlowHero)" opacity="0.95" />
+
+          {/* Hood / Bonnet */}
+          <polygon points="190,285 270,270 380,265 310,285" fill="#ff7733" />
+          <polygon points="270,270 380,265 410,240 330,245" fill="#ff8544" />
+          
+          {/* Windshield & Cabin Roof */}
+          <polygon points="330,245 410,240 500,238 430,248" fill="#ff6a1a" />
+          <polygon points="410,240 500,238 600,245 560,285 415,285" fill="url(#windowTintHero)" stroke="#222834" strokeWidth="1.5" />
+          <polygon points="440,250 510,248 540,280 435,280" fill="#2d3748" opacity="0.6" />
+          <polygon points="500,238 600,245 640,265 560,285" fill="#181e29" />
+
+          {/* Side Body */}
+          <polygon points="270,270 310,285 430,285 410,335 280,335 240,295" fill="url(#bodyTopHero)" />
+          <polygon points="430,285 560,285 540,335 410,335" fill="url(#bodySideHero)" />
+          <polygon points="480,295 535,295 520,325" fill="#220a00" stroke="#ff5500" strokeWidth="1" />
+
+          {/* Cargo / Tail Section */}
+          <polygon points="600,245 680,270 640,295 560,285" fill="#e64400" />
+          <polygon points="640,295 680,270 720,295 670,315 570,315 560,285" fill="#ff5500" />
+          <polygon points="670,315 720,295 725,320 670,335 580,335" fill="url(#bodyDarkHero)" />
+          <polygon points="720,295 735,310 725,320" fill="#b33300" />
+          <line x1="710" y1="300" x2="735" y2="308" stroke="#ff2200" strokeWidth="4" filter="url(#orangeGlowHero)" />
+
+          {/* Turbo Exhaust Flame Blast */}
+          <g className="animate-exhaust-flame">
+            <polygon points="726,307 775,312 727,317" fill="url(#exhaustFlameGradHero)" filter="url(#orangeGlowHero)" />
+            <polygon points="726,309 752,312 727,314" fill="#ffffff" />
+          </g>
+
+          {/* Aerodynamic Wind Streamlines */}
+          <g pointerEvents="none" opacity="0.75">
+            <path d="M 40,285 Q 180,278 260,268 T 420,238 T 620,244 T 780,260" fill="none" stroke="rgba(255, 120, 50, 0.45)" strokeWidth="1.5" strokeDasharray="35 180" strokeLinecap="round" className="animate-wind-streak-1" />
+            <path d="M 70,305 Q 170,298 270,273 T 450,282 T 760,288" fill="none" stroke="rgba(255, 255, 255, 0.35)" strokeWidth="1.2" strokeDasharray="25 150" strokeLinecap="round" className="animate-wind-streak-2" />
+            <path d="M 230,336 L 610,336" fill="none" stroke="rgba(255, 85, 0, 0.4)" strokeWidth="1.2" strokeDasharray="20 120" strokeLinecap="round" className="animate-wind-streak-3" />
+          </g>
+        </g>
+
+        {/* FRONT WHEEL (Grounded Tire + Counter-Clockwise High-Speed Spinning Rim) */}
         <g transform="translate(225, 340)">
           <circle cx="0" cy="0" r="48" fill="#0c0e12" />
           <circle cx="0" cy="0" r="44" fill="#1b1e24" stroke="#08090b" strokeWidth="4" />
-          <circle cx="0" cy="0" r="38" fill="none" stroke="#ff5500" strokeWidth="5" filter="url(#orangeGlowHero)" className="animate-wheel-pulse" />
-          <circle cx="0" cy="0" r="32" fill="none" stroke="#ff7733" strokeWidth="2" />
-          <circle cx="0" cy="0" r="12" fill="#ff5500" />
-          <circle cx="0" cy="0" r="6" fill="#111317" />
-          <line x1="-32" y1="0" x2="32" y2="0" stroke="#ff6a00" strokeWidth="4" />
-          <line x1="0" y1="-32" x2="0" y2="32" stroke="#ff6a00" strokeWidth="4" />
-          <line x1="-22" y1="-22" x2="22" y2="22" stroke="#ff6a00" strokeWidth="3" />
-          <line x1="-22" y1="22" x2="22" y2="-22" stroke="#ff6a00" strokeWidth="3" />
+          <g className="animate-wheel-spin">
+            <circle cx="0" cy="0" r="38" fill="none" stroke="#ff5500" strokeWidth="5" filter="url(#orangeGlowHero)" className="animate-wheel-pulse" />
+            <circle cx="0" cy="0" r="32" fill="none" stroke="#ff7733" strokeWidth="2" />
+            <circle cx="0" cy="0" r="12" fill="#ff5500" />
+            <circle cx="0" cy="0" r="6" fill="#111317" />
+            <line x1="-32" y1="0" x2="32" y2="0" stroke="#ff6a00" strokeWidth="4" />
+            <line x1="0" y1="-32" x2="0" y2="32" stroke="#ff6a00" strokeWidth="4" />
+            <line x1="-22" y1="-22" x2="22" y2="22" stroke="#ff6a00" strokeWidth="3" />
+            <line x1="-22" y1="22" x2="22" y2="-22" stroke="#ff6a00" strokeWidth="3" />
+          </g>
         </g>
 
-        {/* REAR WHEEL */}
+        {/* REAR WHEEL (Grounded Tire + Counter-Clockwise High-Speed Spinning Rim) */}
         <g transform="translate(610, 340)">
           <circle cx="0" cy="0" r="48" fill="#0c0e12" />
           <circle cx="0" cy="0" r="44" fill="#1b1e24" stroke="#08090b" strokeWidth="4" />
-          <circle cx="0" cy="0" r="38" fill="none" stroke="#ff5500" strokeWidth="5" filter="url(#orangeGlowHero)" className="animate-wheel-pulse" />
-          <circle cx="0" cy="0" r="32" fill="none" stroke="#ff7733" strokeWidth="2" />
-          <circle cx="0" cy="0" r="12" fill="#ff5500" />
-          <circle cx="0" cy="0" r="6" fill="#111317" />
-          <line x1="-32" y1="0" x2="32" y2="0" stroke="#ff6a00" strokeWidth="4" />
-          <line x1="0" y1="-32" x2="0" y2="32" stroke="#ff6a00" strokeWidth="4" />
-          <line x1="-22" y1="-22" x2="22" y2="22" stroke="#ff6a00" strokeWidth="3" />
-          <line x1="-22" y1="22" x2="22" y2="-22" stroke="#ff6a00" strokeWidth="3" />
+          <g className="animate-wheel-spin">
+            <circle cx="0" cy="0" r="38" fill="none" stroke="#ff5500" strokeWidth="5" filter="url(#orangeGlowHero)" className="animate-wheel-pulse" />
+            <circle cx="0" cy="0" r="32" fill="none" stroke="#ff7733" strokeWidth="2" />
+            <circle cx="0" cy="0" r="12" fill="#ff5500" />
+            <circle cx="0" cy="0" r="6" fill="#111317" />
+            <line x1="-32" y1="0" x2="32" y2="0" stroke="#ff6a00" strokeWidth="4" />
+            <line x1="0" y1="-32" x2="0" y2="32" stroke="#ff6a00" strokeWidth="4" />
+            <line x1="-22" y1="-22" x2="22" y2="22" stroke="#ff6a00" strokeWidth="3" />
+            <line x1="-22" y1="22" x2="22" y2="-22" stroke="#ff6a00" strokeWidth="3" />
+          </g>
         </g>
 
-        <circle cx="225" cy="340" r="54" fill="none" stroke="rgba(255,85,0,0.4)" strokeWidth="1.5" strokeDasharray="4 6" />
-        <circle cx="610" cy="340" r="54" fill="none" stroke="rgba(255,85,0,0.4)" strokeWidth="1.5" strokeDasharray="4 6" />
+        {/* Scientific HUD Target crosshair rings with dynamic rotation */}
+        <circle cx="225" cy="340" r="54" fill="none" stroke="rgba(255,85,0,0.4)" strokeWidth="1.5" strokeDasharray="4 6" className="animate-wheel-hud" />
+        <circle cx="610" cy="340" r="54" fill="none" stroke="rgba(255,85,0,0.4)" strokeWidth="1.5" strokeDasharray="4 6" className="animate-wheel-hud" />
       </svg>
     </div>
   );

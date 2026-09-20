@@ -118,3 +118,112 @@
 .animate-wheel-pulse {
   animation: wheelPulse 2.4s ease-in-out infinite;
 }
+
+/* Running Car Dynamics Animations */
+@keyframes spinWheelCCW {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+.animate-wheel-spin {
+  transform-origin: 0px 0px;
+  animation: spinWheelCCW 0.35s linear infinite;
+}
+
+@keyframes hudRingSpin {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -80; }
+}
+.animate-wheel-hud {
+  animation: hudRingSpin 1s linear infinite;
+}
+
+@keyframes carSuspensionRide {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-2px) rotate(-0.25deg);
+  }
+  40% {
+    transform: translateY(1.2px) rotate(0.15deg);
+  }
+  60% {
+    transform: translateY(-1.8px) rotate(-0.1deg);
+  }
+  80% {
+    transform: translateY(0.8px) rotate(0.18deg);
+  }
+}
+.animate-car-body {
+  transform-origin: 400px 340px;
+  animation: carSuspensionRide 0.45s ease-in-out infinite;
+}
+
+@keyframes roadStreak {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 350; }
+}
+.animate-road-fast {
+  animation: roadStreak 0.42s linear infinite;
+}
+.animate-road-medium {
+  animation: roadStreak 0.72s linear infinite;
+}
+.animate-road-slow {
+  animation: roadStreak 1.1s linear infinite;
+}
+
+@keyframes windFlow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 400; }
+}
+.animate-wind-streak-1 {
+  animation: windFlow 0.5s linear infinite;
+}
+.animate-wind-streak-2 {
+  animation: windFlow 0.38s linear infinite;
+}
+.animate-wind-streak-3 {
+  animation: windFlow 0.3s linear infinite;
+}
+
+@keyframes headlightPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.65; }
+}
+.animate-headlight-beam {
+  animation: headlightPulse 0.9s ease-in-out infinite;
+}
+
+@keyframes exhaustFlicker {
+  0%, 100% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 0.85;
+  }
+  25% {
+    transform: scaleX(1.4) scaleY(0.85);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleX(0.7) scaleY(1.1);
+    opacity: 0.6;
+  }
+  75% {
+    transform: scaleX(1.2) scaleY(0.95);
+    opacity: 0.95;
+  }
+}
+.animate-exhaust-flame {
+  transform-origin: 726px 312px;
+  animation: exhaustFlicker 0.16s ease-in-out infinite;
+}
+
+@keyframes groundShadowBreathe {
+  0%, 100% { transform: scaleX(1) scaleY(1); opacity: 0.65; }
+  25% { transform: scaleX(0.98) scaleY(0.96); opacity: 0.58; }
+  50% { transform: scaleX(1.02) scaleY(1.04); opacity: 0.72; }
+}
+.animate-ground-shadow {
+  transform-origin: 400px 365px;
+  animation: groundShadowBreathe 0.45s ease-in-out infinite;
+}
